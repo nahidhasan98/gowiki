@@ -1,0 +1,19 @@
+{{if eq .Route "createPage"}}
+<p><span style="font-size: 24px;">{{.Title}}</span> page does not exist!</p>
+{{end}}
+
+{{if eq .Route "createPage"}}
+<h1>Creating {{.Title}}</h1>
+{{else}}
+<h1>Editing {{.Title}}</h1>
+{{end}}
+
+<form action="/save/{{.Title}}" method="POST">
+    <div><textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}</textarea></div>
+
+    {{if eq .Route "createPage"}}
+    <div><input type="submit" value="Create"></div>
+    {{else}}
+    <div><input type="submit" value="Save"></div>
+    {{end}}
+</form>
